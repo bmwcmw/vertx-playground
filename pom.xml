@@ -41,6 +41,7 @@
 
     <modules>
         <module>mongo-embedded</module>
+        <module>rabbitmq-embedded</module>
     </modules>
 
 </project>
