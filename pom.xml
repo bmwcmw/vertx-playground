@@ -39,5 +39,8 @@
         </dependency>
     </dependencies>
 
+    <modules>
+        <module>mongo-embedded</module>
+    </modules>
 
 </project>
