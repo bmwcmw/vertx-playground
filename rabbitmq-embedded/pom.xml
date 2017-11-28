@@ -34,8 +34,15 @@
         <dependency>
             <groupId>io.arivera.oss</groupId>
             <artifactId>embedded-rabbitmq</artifactId>
-            <version></version>
+            <version>1.2.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

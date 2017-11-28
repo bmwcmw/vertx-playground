@@ -16,6 +16,7 @@
     <orderEntry type="library" name="Maven: org.tukaani:xz:1.6" level="project" />
     <orderEntry type="library" name="Maven: org.zeroturnaround:zt-exec:1.9" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:5.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
   </component>
 </module>
