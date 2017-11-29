@@ -33,9 +33,7 @@ public class RabbitMqLauncher {
 
             channel.close();
             connection.close();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             rabbitMq.stop();
