@@ -10,7 +10,7 @@
 
 
     <properties>
-        <vertx-version>3.5.0</vertx-version>
+        <vertx-version>3.5.1</vertx-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -31,6 +31,19 @@
     </build>
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>${vertx-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-client</artifactId>
+            <version>${vertx-version}</version>
+        </dependency>
+
         <!--Mongo-->
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
