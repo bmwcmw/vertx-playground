@@ -1,0 +1,13 @@
+<script>
+    var ws = new WebSocket('ws://localhost:9073');
+    // event emmited when connected
+    ws.onopen = function () {
+        console.log('websocket is connected ...')
+        // send event to websocket server
+        ws.send('Connected from html page')
+    }
+    // event emmited when receiving message
+    ws.onmessage = function (ev) {
+        console.log(ev);
+    }
+</script>
