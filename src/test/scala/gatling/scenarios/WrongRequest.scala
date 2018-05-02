@@ -9,12 +9,13 @@ import scala.util.Random
 
 object WrongRequest {
   val endPoint = List(EndpointJson.uri, EndpointRaw.uri)
+  private val name = "Wrong request"
 
   val req: ChainBuilder = exec(
-    http("wrongdevice_request")
+    http(name)
       .post(Random.shuffle(endPoint).head)
       .body(ElFileBody("request_bad.json")).asJSON
   )
 
-  val scenario: ScenarioBuilder = Constants.createBidderScenario("Wrong Device", req)
+  val scenario: ScenarioBuilder = Constants.createBidderScenario(name, req)
 }

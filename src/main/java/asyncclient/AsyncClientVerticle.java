@@ -1,10 +1,8 @@
 package asyncclient;
 
-import io.vertx.core.AbstractVerticle;
-import io.vertx.core.DeploymentOptions;
-import io.vertx.core.Vertx;
+import io.vertx.core.*;
 
-import java.util.LinkedList;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class AsyncClientVerticle extends AbstractVerticle {
@@ -25,10 +23,29 @@ public class AsyncClientVerticle extends AbstractVerticle {
 
     @Override
     public void start() {
-        LinkedList<DemoWebClient> providers = new LinkedList<>();
-        IntStream.range(0, 3).forEach(idx ->
-                providers.add(idx, new DemoWebClient(String.valueOf(idx), vertx))
+        // find a way to iterate providers, pass to next one by one if first ones failed.
+    }
+
+    private void fetchConcurrently() {
+        List<Future> providerFutures = new ArrayList<>();
+        IntStream.range(0, 3).forEach(
+            idx -> {
+                DemoDataProvider provider = new DemoDataProvider(idx, vertx);
+                providerFutures.add(provider.fetchResultFuture());
+            }
         );
-        providers.getFirst().fetchResult(); // find a way to iterate providers, pass to next one by one if first ones failed.
+        CompositeFuture.any(providerFutures).setHandler(ar -> {
+            if (ar.succeeded()) {
+                // At least one is succeeded
+                System.out.println(findFirstFromCompositeFuture(ar.result().list()).get());
+            } else {
+                // All failed
+                System.out.println("All failed");
+            }
+        });
+    }
+
+    private Optional<Object> findFirstFromCompositeFuture(List<Object> list) {
+        return list.stream().filter(Objects::nonNull).findFirst();
     }
 }

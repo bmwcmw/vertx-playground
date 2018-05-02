@@ -1,22 +1,20 @@
 package com.databerries.gatling.scenarios
 
-import scala.util.Random
 import com.databerries.gatling.Constants
-import gatling.scenarios.{EndpointJson, EndpointRaw}
 import io.gatling.core.Predef._
-import io.gatling.http.Predef._
 import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
+import io.gatling.http.Predef._
 
 object WrongEndpoint {
-  val endPoint = List(EndpointJson.uri, EndpointRaw.uri)
-  private val name = "RAW post"
+  private val name = "Wrong endpoint"
 
+  val uri = "/invalid"
 
   val req: ChainBuilder = exec(
-    http("wrongdevice_request")
-      .post(Random.shuffle(endPoint).head)
-      .body(ElFileBody("request_bad.json")).asJSON
+    http(name)
+      .post(uri)
+      .body(StringBody("nothing"))
   )
 
-  val scenario: ScenarioBuilder = Constants.createBidderScenario("Wrong Device", req)
+  val scenario: ScenarioBuilder = Constants.createBidderScenario(name, req)
 }

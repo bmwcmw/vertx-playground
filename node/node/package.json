@@ -6,10 +6,10 @@
   "engines": {
     "node": ">=6.x"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "compression": "~1.7.2",
+    "npm": "^6.0.0",
     "response-time": "~2.3.2"
   },
   "devDependencies": {}

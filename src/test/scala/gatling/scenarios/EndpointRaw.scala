@@ -11,7 +11,8 @@ object EndpointRaw {
   val uri = "/raw"
 
   val req: ChainBuilder = exec(
-    http(name).post(uri)
+    http(name)
+      .post(uri)
       .body(StringBody("ok"))
   )
 
