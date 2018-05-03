@@ -10,8 +10,7 @@ http.createServer(function (request, response) {
     //     //
     // }
     response.writeHead(200, {
-        'Content-Type': 'text/html',
-        ':status': 200
+        'Content-Type': 'text/html'
     });
     response.write('Something');
     response.end();
@@ -32,8 +31,7 @@ const options = {
 // Create a plain-text HTTP/2 server
 http2.createSecureServer(options).on('stream', (stream, headers) => {
     stream.respond({
-        'Content-Type': 'text/html',
-        ':status': 200
+        'Content-Type': 'text/html'
     });
     stream.write('Something');
     stream.end();
