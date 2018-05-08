@@ -87,6 +87,12 @@
             <version>${vertx-version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <version>${vertx-version}</version>
+        </dependency>
+
         <!--Mongo-->
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
