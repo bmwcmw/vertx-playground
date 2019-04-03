@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: demoapp
+server:
+  port: 8998
