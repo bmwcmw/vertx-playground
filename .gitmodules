@@ -1,0 +1,4 @@
+[submodule "vertx-examples-master"]
+	path = vertx-examples-master
+	url = https://github.com/vert-x3/vertx-examples.git
+	branch = master
