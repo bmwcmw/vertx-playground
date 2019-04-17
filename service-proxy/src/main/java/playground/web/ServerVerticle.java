@@ -26,10 +26,21 @@ public class ServerVerticle extends AbstractVerticle {
     }
 
     private void getAllArticlesHandler(RoutingContext routingContext) {
-        vertx.eventBus().<String>send(CommunicationVerticle.COMMUNICATION, "",
-                result -> {
-                    if (result.succeeded()) {
-                        String chunk = result.result() == null ? result.result().body() : null;
+        vertx.eventBus()
+                .<String>send(CommunicationVerticle.COMMUNICATION, "",
+                        result -> {
+                            log.info(result.result().toString());
+                            if (!result.succeeded()) {
+                                result.cause().printStackTrace();
+                                log.error(result.cause());
+                                routingContext.response()
+                                        .setStatusCode(500)
+                                        .end();
+                            }
+                        })
+                .start(result -> {
+                    if (result.succeeded() && result.result() != null) {
+                        String chunk = result.result() == null ? "NULL should not be there" : result.toString();
                         log.info("ServerVerticle replying " + chunk);
                         routingContext.response()
                                 .putHeader("content-type", "application/json")
